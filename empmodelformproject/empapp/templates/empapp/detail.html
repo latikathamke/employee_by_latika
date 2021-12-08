@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{%static '/css/emp_main.css'%}">
+        <title>Detail</title>
+        <style>
+            table, th, td {
+              border: 1px solid black;
+              text-align : center;
+              padding : 5px;
+             }
+            table {
+              width: 100%;
+              border-collapse: collapse;
+             }
+             th {
+               height: 50px;
+             }
+        </style>
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="active" href="/home/">HOME</a>
+            <a href="/add/">ADD NEW EMPLOYEE</a>
+            <a href="/read/">SHOW ALL EMPLOYEE</a>
+            <form action="{% url 'search_result' %}" method="get" class="form-inline" style = "position:fixed; margin-left:1150px;">
+                <input class="form-control mr-sm-7" type="search" name="query" placeholder="By Employee Name" aria-label="Search">
+                <button  type="submit" class="btn btn-danger"> SEARCH EMPLOYEE </button>   
+            </form>
+        </div>
+            <br><br>
+            <h3 style="text-align: center; color:red;"><b>Here You Will Get Detail Information of {{obj.employee_name}}</b></h3>
+            <br><br>
+            <div class="container">
+                <center>
+                    <table>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Employee Name</th>
+                            <th>Employee Designation</th>
+                            <th>Employee Salary </th>
+                            <th>Employee Age</th>
+                            <th>Employee Email ID</th>
+                            <th>Employee Address</th>
+                            <th>Employee Gender</th>
+                        </tr>
+                    </center>
+                    <center>
+                        <tr>
+                            <td>{{obj.id}}</td>
+                            <td>{{obj.employee_name}}</td>
+                            <td>{{obj.employee_designation}} </td>
+                            <td>{{obj.employee_salary}} </td>
+                            <td>{{obj.employee_age}}</td>
+                            <td>{{obj.employee_email_id}} </td>
+                            <td>{{obj.employee_address}} </td>
+                            <td>{{obj.employee_gender}} </td>
+                        </tr> 
+                    </center>
+                    </table>
+                    <br>
+                    <br>
+                    <a class="btn btn-danger" href="/update/{{obj.id}}/" role="button">UPDATE EMPLOYEE +</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    <a class="btn btn-danger" href="/delete/{{obj.id}}/" role="button">DELETE EMPLOYEE -</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+            </div>
+    </body>
+    </html>

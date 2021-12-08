@@ -1,0 +1,30 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static '/css/emp_main.css'%}">
+    <title>delete</title>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="/home/">HOME</a>
+        <a href="/add/">ADD NEW EMPLOYEE</a>
+        <a href="/read/">SHOW ALL EMPLOYEE</a>
+        <form action="{% url 'search_result' %}" method="get" class="form-inline" style = "position:fixed; margin-left:1150px;">
+            <input class="form-control mr-sm-7" type="search" name="query" placeholder="By Employee Name" aria-label="Search">
+            <button  type="submit" class="btn btn-danger"> SEARCH EMPLOYEE </button>   
+        </form>
+    </div>
+    <br><br><br>
+    <h3 style="text-align: center; color:red;"><b>Are You Sure You Want To Delete the Employee  "{{obj.employee_name}}" ?</b> </h3>
+    <div class="container"> 
+        <div class="jumbotron">
+            <form action="/delete/{{obj.id}}/" method="POST">{% csrf_token %}
+                <center>
+                <button type="submit" class="btn btn-danger">Yes,I'm Sure</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a class="btn btn-secondary" href="/read/" role="button"> No,Take Me Back</a>
+                </center>           
+            </form>      
+        </div>
+    </div>
+</body>
+</html>

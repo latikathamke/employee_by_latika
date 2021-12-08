@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{%static '/css/emp_main.css'%}">
+        <title>read</title>
+        <style>
+            table, th, td {
+              border: 1px solid black;
+              text-align : center;
+              padding : 5px;
+             }
+            table {
+              width: 100%;
+              border-collapse: collapse;
+             }
+             th {
+               height: 50px;
+             }
+        </style>
+    </head>
+    <body> 
+        <div class="topnav">
+            <a class="active" href="/home/">HOME</a>
+            <a href="/add/">ADD NEW EMPLOYEE</a>
+            <a href="/read/">SHOW ALL EMPLOYEE</a>
+            <form action="{% url 'search_result' %}" method="get" class="form-inline" style = "position:fixed; margin-left:1150px;">
+                <input class="form-control mr-sm-7" type="search" name="query" placeholder="By Employee Name" aria-label="Search">
+                <button  type="submit" class="btn btn-danger"> SEARCH EMPLOYEE </button>   
+            </form>
+        </div>
+        <div class="container">
+            
+            {% if employees %}
+                <h3 style="text-align: center; color:red;"><b>All Employee Information Here!!!</b></h3>
+                <br>
+                <center>
+                <table>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                    </tr>
+                </center>
+                {% for employee in employees %}
+                <center>
+                    <tr>
+                        <td><a href="/detail/{{employee.id}}/">{{employee.id}}</a></td>
+                        <td>{{employee.employee_name}}</td>
+                    </tr> 
+                </center>
+                {% endfor%}
+                </table>
+                {% else %}
+                <br><br>
+                <center><h2>Employee Not Available in Database </h2></center> 
+                
+            {% endif %}
+                
+               
+        </div>
+    </body>
+    </html>

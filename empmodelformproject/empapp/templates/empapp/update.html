@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load crispy_forms_tags %}
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{%static '/css/emp_main.css'%}">
+        <style>
+            #div_id_employee_gender>div,label{
+                display:inline-flex;
+                margin-right: 10px;
+            }
+
+            form.thicker {
+                font-weight: 900;
+            }
+        </style>
+    <title>update</title>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="/home/">HOME</a>
+        <a href="/add/">ADD NEW EMPLOYEE</a>
+        <a href="/read/">SHOW ALL EMPLOYEE</a>
+        <form action="{% url 'search_result' %}" method="get" class="form-inline" style = "position:fixed; margin-left:1100px;">
+            <input class="form-control mr-sm-7" type="search" name="query" placeholder="By Employee Name" aria-label="Search">
+            <button  type="submit" class="btn btn-danger"> SEARCH EMPLOYEE </button>   
+        </form>
+      </div>
+    <h3 style="text-align: center; color:red;"><b>Update Employee Information Here !!!</b></h3>
+    <div class="container">
+        <div class="jumbotron">
+            <form action="" method="POST" class="thicker">{% csrf_token %}
+                    {{form|crispy }}
+                    <center><button  type="submit" class="btn btn-danger"> UPDATE EMPLOYEE </button></center>    
+             </form>
+        </div>
+    </div>  
+    
+              
+</body>
+</html>

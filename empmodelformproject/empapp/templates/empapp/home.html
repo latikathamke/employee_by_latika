@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{%static '/css/emp_main.css'%}">
+    </head>
+    <body>  
+        <div class="container">
+            <div class="jumbotron">
+                <center>
+                <h1 class="display-4 " style="color:black;" ><b>EMPLOYEE MANAGEMENT SYSTEM</b></h1>
+                </center>
+                <br><br>
+                <center>
+                  <a class="btn btn-danger btn-lg" href="/add/" role="button">ADD NEW EMPLOYEE</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a class="btn btn-danger btn-lg" href="/read/" role="button">SHOW ALL EMPLOYEE</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a class="btn btn-danger btn-lg" href="/search/" role="button">SEARCH EMPLOYEE</a>
+                </center>
+                </div>
+        </div>
+    </body>
